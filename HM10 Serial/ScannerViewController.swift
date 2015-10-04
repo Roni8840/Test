@@ -62,7 +62,7 @@ class ScannerViewController: UIViewController, UITableViewDataSource, UITableVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "connect" {
             // pas the selected peripheral on to the next view
-            var connectViewC = segue.destinationViewController as! ConnectViewController
+            let connectViewC = segue.destinationViewController as! ConnectViewController
             connectViewC.selectedPeripheral = selectedPeripheral
         }
     }
@@ -80,7 +80,7 @@ class ScannerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // return a cell with the peripheral name as text in the label
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
         let label = cell.viewWithTag(1) as! UILabel!
         label.text = peripherals[indexPath.row].peripheral.name
         return cell
@@ -108,7 +108,7 @@ class ScannerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // add to the array, next sort & reload
         peripherals.append(peripheral: peripheral, RSSI: RSSI.floatValue)
-        peripherals.sort { $0.RSSI < $1.RSSI }
+        peripherals.sortInPlace { $0.RSSI < $1.RSSI }
         tableView.reloadData()
     }
     

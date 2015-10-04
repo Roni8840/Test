@@ -77,8 +77,8 @@ class SerialViewController: UIViewController, UITextFieldDelegate, DZBluetoothSe
     func keyboardWillShow(notification: NSNotification) {
         // animate the text field to stay above the keyboard
         var info = notification.userInfo!
-        var value = info[UIKeyboardFrameEndUserInfoKey] as! NSValue
-        var keyboardFrame = value.CGRectValue()
+        let value = info[UIKeyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardFrame = value.CGRectValue()
         
         //TODO: Not animating properly
         UIView.animateWithDuration(1, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
