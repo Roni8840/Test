@@ -207,8 +207,39 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         
         // there is new data for us! Update the buffer!
-        let newStr = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding) as! String
+        //let data = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding) as! String
+        var newStr = NSString(data: characteristic.value!, encoding: NSUTF16StringEncoding) as! String
+
+        let data : NSData! = newStr.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        let count = data.length / sizeof(UInt8)
+        
+        // create an array of Uint8
+        var array = [UInt8](count: count, repeatedValue: 0)
+        
+        // copy bytes into array
+        data.getBytes(&array, length:count * sizeof(UInt8))
+        
+        //print(array)
+        
+        /*
+        
+
+        if (array[0] == 0xAA)
+        {
+            newStr = "START"
+        }
+        else
+        {
+            newStr = "?"
+        }
+        */
+    
+        
+        newStr = array.description
+        
         buffer += newStr
+
         
         // notify the delegate of the new string
         if delegate.respondsToSelector(Selector("serialHandlerDidReceiveMessage:")) {
