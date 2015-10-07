@@ -214,6 +214,7 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
 
         let data = NSData(data: characteristic.value!)
         
+        //create empty array
         let count = data.length / sizeof(UInt8)
         
         // create an array of Uint8
@@ -225,8 +226,6 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
         arrayBuffer = arrayBuffer + array
         array = arrayBuffer
         
-        //let newStr = arrayBuffer.description
-        //buffer += newStr
         if arrayBuffer.count > 100 { //TODO: richtige grösse
             
             //leeres array für start indizes
@@ -242,23 +241,19 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
                         startIndices[x] = index
                         x++
                     }
-                    
                 }
             }
 
-            
-            let startIndex = 0
-            var subArr = array[startIndices[startIndex]...startIndices[startIndex]+45]
-            //let subArr = [0xAA,0x55,0x2D,0x06,0x8F,0x1E,0xB8,0x00,0x01,0x09,0x00,0x01,0x00,0x02,0x00,0x02,0x1D,0x00,0x00,0x00,0x01,0x00,0x02,0x25,0x04,0x00,0x20,0x13,0x04,0x80,0x00,0x00,0x1B,0x00,0x25,0x2C,0x00,0x00,0x00,0x00,0x1A,0x15,0x00,0x12,0x11,0x30]
+            let start = startIndices[0]
+            var subArr = array[start...(start+45)] //TODO: bytesream länge herauslesen
             
             //return string für message field
             var returnString = ""
             
             //ausgabe formatieren
             for var i = 0; i <= 45; ++i {
-                let wert = subArr[startIndices[startIndex]+i].description
+                let wert = subArr[start+i].description
                 returnString = returnString + "B" + (i as NSNumber).stringValue + ": "
-                //returnString = returnString + (subArr[i] as NSNumber).stringValue + "\n"
                 returnString = returnString + wert + "\n"
             }
             

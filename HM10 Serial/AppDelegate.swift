@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // register default user prefs
         NSUserDefaults.standardUserDefaults().registerDefaults(["MessageOption": MessageOption.NoLineEnding.rawValue, "ReceivedMessageOption": ReceivedMessageOption.Nothing.rawValue])
         
-        sleep(1) //launch screen etwas länger anzeigen
+        sleep(1) //launch screen etwas länger als nötig anzeigen
         
         return true
     }
