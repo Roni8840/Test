@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5232396B1BC2DBF20073DB5C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5232396A1BC2DBF20073DB5C /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
+		52B82DD01BC56E3A00EBA6AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52B82DCF1BC56E3A00EBA6AE /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
 		FA5AB96B1B77A30F007443C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5AB96A1B77A30F007443C8 /* AppDelegate.swift */; };
 		FA5AB9701B77A30F007443C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5AB96E1B77A30F007443C8 /* Main.storyboard */; };
 		FA5AB9751B77A30F007443C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5AB9731B77A30F007443C8 /* LaunchScreen.xib */; };
@@ -31,8 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5232396A1BC2DBF20073DB5C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "HF LUM MINI/Images.xcassets"; sourceTree = "<group>"; };
-		FA5AB9651B77A30E007443C8 /* BLE Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BLE Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B82DCF1BC56E3A00EBA6AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "../HF LUM/Images.xcassets"; sourceTree = "<group>"; };
+		FA5AB9651B77A30E007443C8 /* HF LUM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HF LUM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5AB9691B77A30F007443C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA5AB96A1B77A30F007443C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA5AB96F1B77A30F007443C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,7 +69,6 @@
 		FA5AB95C1B77A30E007443C8 = {
 			isa = PBXGroup;
 			children = (
-				5232396A1BC2DBF20073DB5C /* Images.xcassets */,
 				FA5AB9671B77A30E007443C8 /* HM10 Serial */,
 				FA5AB97D1B77A30F007443C8 /* HM10 SerialTests */,
 				FA5AB9661B77A30E007443C8 /* Products */,
@@ -79,7 +78,7 @@
 		FA5AB9661B77A30E007443C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA5AB9651B77A30E007443C8 /* BLE Remote.app */,
+				FA5AB9651B77A30E007443C8 /* HF LUM.app */,
 				FA5AB97A1B77A30F007443C8 /* HM10 SerialTests.xctest */,
 			);
 			name = Products;
@@ -88,6 +87,7 @@
 		FA5AB9671B77A30E007443C8 /* HM10 Serial */ = {
 			isa = PBXGroup;
 			children = (
+				52B82DCF1BC56E3A00EBA6AE /* Images.xcassets */,
 				FA5AB96A1B77A30F007443C8 /* AppDelegate.swift */,
 				FAEB7CE51B78998C00F1141C /* StartViewController.swift */,
 				FA755D2F1B78B8FE00A902FE /* ScannerViewController.swift */,
@@ -130,9 +130,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FA5AB9641B77A30E007443C8 /* BLE Remote */ = {
+		FA5AB9641B77A30E007443C8 /* HF LUM */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA5AB9841B77A30F007443C8 /* Build configuration list for PBXNativeTarget "BLE Remote" */;
+			buildConfigurationList = FA5AB9841B77A30F007443C8 /* Build configuration list for PBXNativeTarget "HF LUM" */;
 			buildPhases = (
 				FA5AB9611B77A30E007443C8 /* Sources */,
 				FA5AB9621B77A30E007443C8 /* Frameworks */,
@@ -142,9 +142,9 @@
 			);
 			dependencies = (
 			);
-			name = "BLE Remote";
+			name = "HF LUM";
 			productName = "HM10 Serial";
-			productReference = FA5AB9651B77A30E007443C8 /* BLE Remote.app */;
+			productReference = FA5AB9651B77A30E007443C8 /* HF LUM.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FA5AB9791B77A30F007443C8 /* HM10 SerialTests */ = {
@@ -199,7 +199,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FA5AB9641B77A30E007443C8 /* BLE Remote */,
+				FA5AB9641B77A30E007443C8 /* HF LUM */,
 				FA5AB9791B77A30F007443C8 /* HM10 SerialTests */,
 			);
 		};
@@ -210,8 +210,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B82DD01BC56E3A00EBA6AE /* Images.xcassets in Resources */,
 				FA5AB9701B77A30F007443C8 /* Main.storyboard in Resources */,
-				5232396B1BC2DBF20073DB5C /* Images.xcassets in Resources */,
 				FA5AB9751B77A30F007443C8 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,7 +253,7 @@
 /* Begin PBXTargetDependency section */
 		FA5AB97C1B77A30F007443C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FA5AB9641B77A30E007443C8 /* BLE Remote */;
+			target = FA5AB9641B77A30E007443C8 /* HF LUM */;
 			targetProxy = FA5AB97B1B77A30F007443C8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -366,6 +366,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "HM10 Serial/Info.plist";
@@ -381,6 +382,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "HM10 Serial/Info.plist";
@@ -440,7 +442,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA5AB9841B77A30F007443C8 /* Build configuration list for PBXNativeTarget "BLE Remote" */ = {
+		FA5AB9841B77A30F007443C8 /* Build configuration list for PBXNativeTarget "HF LUM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA5AB9851B77A30F007443C8 /* Debug */,

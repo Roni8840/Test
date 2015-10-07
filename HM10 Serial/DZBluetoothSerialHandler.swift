@@ -53,6 +53,7 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
     
     /// The string buffer received messages will be stored in
     var buffer = ""
+    var arrayBuffer = [UInt8]()
     
     /// The state of the bluetooth manager (use this to determine whether it is on or off or disabled etc)
     var state: CBCentralManagerState { get { return centralManager.state } }
@@ -118,6 +119,7 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
     func read() -> String {
         let str = "\(buffer)" // <- is dit wel nodig??
         buffer = ""
+        arrayBuffer = [UInt8]()
         return str
     }
     
@@ -208,9 +210,9 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
         
         // there is new data for us! Update the buffer!
         //let data = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding) as! String
-        var newStr = NSString(data: characteristic.value!, encoding: NSUTF16StringEncoding) as! String
+        //var newStr = NSString(data: characteristic.value!, encoding: NSUTF16StringEncoding) as! String
 
-        let data : NSData! = newStr.dataUsingEncoding(NSUTF8StringEncoding)
+        let data = NSData(data: characteristic.value!)
         
         let count = data.length / sizeof(UInt8)
         
@@ -219,33 +221,57 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
         
         // copy bytes into array
         data.getBytes(&array, length:count * sizeof(UInt8))
-        
-        //print(array)
-        
-        /*
-        
-
-        if (array[0] == 0xAA)
-        {
-            newStr = "START"
-        }
-        else
-        {
-            newStr = "?"
-        }
-        */
     
+        arrayBuffer = arrayBuffer + array
+        array = arrayBuffer
         
-        newStr = array.description
-        
-        buffer += newStr
+        //let newStr = arrayBuffer.description
+        //buffer += newStr
+        if arrayBuffer.count > 100 { //TODO: richtige grösse
+            
+            //leeres array für start indizes
+            var startIndices = [Int](count: array.count, repeatedValue: 0)
+            
+            var x = 0 //laufnummer
+            
+            //start in empfangen Daten finden
+            for var index = 0; index < array.count; ++index {
+                
+                if array[index] == 0xAA{
+                    if array[index+1] == 0x55{
+                        startIndices[x] = index
+                        x++
+                    }
+                    
+                }
+            }
 
+            
+            let startIndex = 0
+            var subArr = array[startIndices[startIndex]...startIndices[startIndex]+45]
+            //let subArr = [0xAA,0x55,0x2D,0x06,0x8F,0x1E,0xB8,0x00,0x01,0x09,0x00,0x01,0x00,0x02,0x00,0x02,0x1D,0x00,0x00,0x00,0x01,0x00,0x02,0x25,0x04,0x00,0x20,0x13,0x04,0x80,0x00,0x00,0x1B,0x00,0x25,0x2C,0x00,0x00,0x00,0x00,0x1A,0x15,0x00,0x12,0x11,0x30]
+            
+            //return string für message field
+            var returnString = ""
+            
+            //ausgabe formatieren
+            for var i = 0; i <= 45; ++i {
+                let wert = subArr[startIndices[startIndex]+i].description
+                returnString = returnString + "B" + (i as NSNumber).stringValue + ": "
+                //returnString = returnString + (subArr[i] as NSNumber).stringValue + "\n"
+                returnString = returnString + wert + "\n"
+            }
+            
+            let newStr = returnString
+            buffer += newStr
+            
+            // notify the delegate of the new string
+            if delegate.respondsToSelector(Selector("serialHandlerDidReceiveMessage:")) {
+                delegate!.serialHandlerDidReceiveMessage!(newStr)
+            }
         
-        // notify the delegate of the new string
-        if delegate.respondsToSelector(Selector("serialHandlerDidReceiveMessage:")) {
-            delegate!.serialHandlerDidReceiveMessage!(newStr)
         }
+        
     }
-    
    
 }

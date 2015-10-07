@@ -99,7 +99,8 @@ class SerialViewController: UIViewController, UITextFieldDelegate, DZBluetoothSe
     
     func serialHandlerDidReceiveMessage(message: String) {
         // add the received text to the textView, optionally with a line break at the end
-        mainTextView.text! += serial.read()
+        //RER mainTextView.text! += serial.read()
+        mainTextView.text! = serial.read()
         let pref = NSUserDefaults.standardUserDefaults().integerForKey("ReceivedMessageOption")
         if pref == ReceivedMessageOption.Newline.rawValue { mainTextView.text! += "\n" }
     }
