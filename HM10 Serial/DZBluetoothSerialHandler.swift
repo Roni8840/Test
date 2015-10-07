@@ -17,6 +17,7 @@ var serial: DZBluetoothSerialHandler!
     
     /// Called when a message is received
     optional func serialHandlerDidReceiveMessage(message: String)
+    optional func serialHandlerNewData(message: String)
     
     /// Called when de state of the CBCentralManager changes (e.g. when bluetooth is turned on/off)
     optional func serialHandlerDidChangeState(newState: CBCentralManagerState)
@@ -263,6 +264,9 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
             // notify the delegate of the new string
             if delegate.respondsToSelector(Selector("serialHandlerDidReceiveMessage:")) {
                 delegate!.serialHandlerDidReceiveMessage!(newStr)
+            }
+            if delegate.respondsToSelector(Selector("serialHandlerNewData:")){
+                delegate!.serialHandlerNewData!(newStr)
             }
         
         }
