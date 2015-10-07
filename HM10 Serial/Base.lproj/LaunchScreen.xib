@@ -11,9 +11,10 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon no background" translatesAutoresizingMaskIntoConstraints="NO" id="9Pm-GR-Biz">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schwarz" translatesAutoresizingMaskIntoConstraints="NO" id="9Pm-GR-Biz">
                     <rect key="frame" x="112" y="116" width="250" height="250"/>
                     <animations/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="250" id="2iS-Zo-br2">
                             <variation key="heightClass=regular-widthClass=regular" constant="350"/>
@@ -23,7 +24,8 @@
                 </imageView>
             </subviews>
             <animations/>
-            <color key="backgroundColor" red="0.019607843137254902" green="0.20000000000000001" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="9Pm-GR-Biz" secondAttribute="centerY" constant="-1" id="KHr-Eo-nV9"/>
                 <constraint firstAttribute="centerX" secondItem="9Pm-GR-Biz" secondAttribute="centerX" constant="3" id="hdw-Ws-2fM"/>
@@ -34,6 +36,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Icon no background" width="341" height="341"/>
+        <image name="schwarz" width="1024" height="1024"/>
     </resources>
 </document>
