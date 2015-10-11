@@ -55,6 +55,8 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
     /// The string buffer received messages will be stored in
     var buffer = ""
     var arrayBuffer = [UInt8]()
+    var dataBuf = [UInt8](count: 100, repeatedValue: 0)
+
     
     /// The state of the bluetooth manager (use this to determine whether it is on or off or disabled etc)
     var state: CBCentralManagerState { get { return centralManager.state } }
@@ -122,6 +124,12 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
         buffer = ""
         arrayBuffer = [UInt8]()
         return str
+    }
+    
+    /// Gives the content of the array and empties the array
+    func readArray() -> [UInt8] {
+        //let array = dataBuf[0]
+        return dataBuf
     }
     
     /// Gives the content of the buffer without emptying it
@@ -248,6 +256,11 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
             let start = startIndices[0]
             var subArr = array[start...(start+45)] //TODO: bytesream länge herauslesen
             
+            
+            for var z = 0; z<45; ++z{
+                dataBuf[z] = array[start+z]
+            }
+            
             //return string für message field
             var returnString = ""
             
@@ -255,7 +268,7 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
             for var i = 0; i <= 45; ++i {
                 let wert = subArr[start+i].description
                 returnString = returnString + "B" + (i as NSNumber).stringValue + ": "
-                returnString = returnString + wert + "\n"
+                returnString = returnString + wert + ","
             }
             
             let newStr = returnString
@@ -268,6 +281,8 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
             if delegate.respondsToSelector(Selector("serialHandlerNewData:")){
                 delegate!.serialHandlerNewData!(newStr)
             }
+            arrayBuffer = []
+            
         
         }
         

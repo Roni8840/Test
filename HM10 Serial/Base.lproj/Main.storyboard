@@ -80,7 +80,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Plv-MK-Pj9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Plv-MK-Pj9">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -133,11 +133,10 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="Plv-MK-Pj9" secondAttribute="centerY" id="TK2-5g-q9f"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Plv-MK-Pj9" secondAttribute="trailing" constant="-16" id="bS0-qa-6Vh"/>
-                            <constraint firstItem="Plv-MK-Pj9" firstAttribute="top" secondItem="pua-UU-5uR" secondAttribute="bottom" constant="-64" id="hWn-I7-fAC"/>
-                            <constraint firstItem="Plv-MK-Pj9" firstAttribute="leading" secondItem="m6n-mb-AsH" secondAttribute="leadingMargin" constant="-16" id="o5Q-9u-VQJ"/>
-                            <constraint firstItem="LU7-hj-xrB" firstAttribute="top" secondItem="Plv-MK-Pj9" secondAttribute="bottom" id="ymI-vA-zRU"/>
+                            <constraint firstAttribute="trailing" secondItem="Plv-MK-Pj9" secondAttribute="trailing" id="1Kp-KC-TCt"/>
+                            <constraint firstItem="Plv-MK-Pj9" firstAttribute="bottom" secondItem="LU7-hj-xrB" secondAttribute="top" id="37E-Xq-WBS"/>
+                            <constraint firstItem="Plv-MK-Pj9" firstAttribute="top" secondItem="m6n-mb-AsH" secondAttribute="top" id="btJ-L3-0Kw"/>
+                            <constraint firstItem="Plv-MK-Pj9" firstAttribute="leading" secondItem="m6n-mb-AsH" secondAttribute="leading" id="mFo-TC-kWZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Scanning ..." id="eda-Ke-DJ0">
@@ -422,19 +421,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKa-Ue-hGn">
-                                <rect key="frame" x="16" y="0.0" width="568" height="544"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKa-Ue-hGn">
+                                <rect key="frame" x="20" y="0.0" width="560" height="544"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-q6-XAi">
-                                <rect key="frame" x="-2" y="556" width="604" height="44"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-q6-XAi">
+                                <rect key="frame" x="2" y="556" width="596" height="44"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your message and hit 'Send'" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NKM-rO-OFm">
-                                        <rect key="frame" x="8" y="7" width="590" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your message and hit 'Send'" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NKM-rO-OFm">
+                                        <rect key="frame" x="8" y="7" width="582" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="send"/>
@@ -537,9 +536,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SQS-Tx-fW5">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yIt-05-soH">
+                                <rect key="frame" x="156" y="236" width="289" height="128"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="b1d-YX-vNS">
+                                        <rect key="frame" x="0.0" y="0.0" width="289" height="128"/>
+                                        <animations/>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="b1d-YX-vNS"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DD5-Kc-x4F">
+                                <rect key="frame" x="156" y="236" width="289" height="128"/>
+                                <animations/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="289" id="mht-7p-j0j"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="mht-7p-j0j"/>
+                                    </mask>
+                                </variation>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="remote_control" translatesAutoresizingMaskIntoConstraints="NO" id="zL9-qE-cf6">
                                 <rect key="frame" x="180" y="236" width="240" height="128"/>
                                 <animations/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SQS-Tx-fW5">
+                                <rect key="frame" x="180" y="132" width="240" height="128"/>
+                                <animations/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Qqs-D4-Lsb"/>
                                 </constraints>
@@ -547,17 +586,41 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9L2-ta-SoQ">
+                                <rect key="frame" x="279" y="289" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="DD5-Kc-x4F" firstAttribute="centerX" secondItem="cEO-gs-ph1" secondAttribute="centerX" id="3go-f4-bNt"/>
                             <constraint firstItem="SQS-Tx-fW5" firstAttribute="centerY" secondItem="cEO-gs-ph1" secondAttribute="centerY" id="8Um-Dg-Iak"/>
+                            <constraint firstItem="zL9-qE-cf6" firstAttribute="centerY" secondItem="cEO-gs-ph1" secondAttribute="centerY" id="96Y-W9-nzY"/>
+                            <constraint firstItem="9L2-ta-SoQ" firstAttribute="centerX" secondItem="SQS-Tx-fW5" secondAttribute="centerX" id="FQR-x8-KBm"/>
+                            <constraint firstItem="9L2-ta-SoQ" firstAttribute="centerY" secondItem="cEO-gs-ph1" secondAttribute="centerY" id="NGW-o0-EYD"/>
                             <constraint firstItem="SQS-Tx-fW5" firstAttribute="centerX" secondItem="cEO-gs-ph1" secondAttribute="centerX" id="SMt-IR-FuL"/>
+                            <constraint firstItem="DD5-Kc-x4F" firstAttribute="top" secondItem="Hq2-1I-ef8" secondAttribute="bottom" constant="216" id="q7R-iQ-wqA"/>
+                            <constraint firstItem="DD5-Kc-x4F" firstAttribute="centerY" secondItem="cEO-gs-ph1" secondAttribute="centerY" id="xPF-cJ-xke"/>
                             <constraint firstItem="SQS-Tx-fW5" firstAttribute="top" secondItem="Hq2-1I-ef8" secondAttribute="bottom" constant="216" id="yP4-RI-J7Y"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="yIt-05-soH"/>
+                                <exclude reference="zL9-qE-cf6"/>
+                                <exclude reference="SQS-Tx-fW5"/>
+                                <exclude reference="9L2-ta-SoQ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="q7R-iQ-wqA"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="nachlaufzeit" destination="SQS-Tx-fW5" id="D1y-zu-qwH"/>
+                        <outlet property="Text" destination="DD5-Kc-x4F" id="hTg-O1-r6e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rb1-Ta-GSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -584,4 +647,7 @@
             <point key="canvasLocation" x="1240" y="595"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="remote_control" width="289" height="507"/>
+    </resources>
 </document>

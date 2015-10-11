@@ -16,7 +16,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
 //MARK: IBOutlets
     
 
-    @IBOutlet weak var nachlaufzeit: UITextView!
+    @IBOutlet weak var Text: UITextView!
     
 
 
@@ -31,9 +31,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
         
         // UI
         title = serial.connectedPeripheral!.name
-        nachlaufzeit.text = ""
-        
-
         
     }
     
@@ -43,7 +40,27 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
     
     func serialHandlerNewData(message: String) {
         // add the received text to the textView, optionally with a line break at the end
-        nachlaufzeit.text! = serial.read()
+        //nachlaufzeit.text! = serial.readArray().description
+        
+        let daten = serial.readArray()
+        
+        var string = ""
+        
+        
+        string += "Settings:\n"
+        string += "Nachlaufzeit: " + (Int(daten[39])*256+Int(daten[40])).description + "s\n"
+        string += "Range: " + (Int(daten[41])).description + " Prozent \n"
+        string += "Lux: " + (Int(daten[42])*256+Int(daten[43])).description + "lx \n"
+        
+        string += "\nInformationen:\n"
+        string += "Temp: " + Int(daten[32]).description + "°C \n"
+        string += "Gemessene Helligkeit: " + (Int(daten[22])*256+Int(daten[23])).description + "lx \n"
+
+        string += "\n...\n"
+        
+        Text.text! = string
+
+        
     }
     
 
