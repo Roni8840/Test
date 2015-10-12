@@ -460,7 +460,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Visualisieren"/>
                                 <connections>
-                                    <segue destination="wus-6l-stZ" kind="modal" id="pWl-iX-Y5Z"/>
+                                    <segue destination="du8-IE-dTA" kind="modal" id="pWl-iX-Y5Z"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -551,8 +551,8 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DD5-Kc-x4F">
-                                <rect key="frame" x="156" y="236" width="289" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DD5-Kc-x4F">
+                                <rect key="frame" x="0.0" y="72" width="600" height="528"/>
                                 <animations/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -582,7 +582,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Qqs-D4-Lsb"/>
                                 </constraints>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -597,14 +597,16 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DD5-Kc-x4F" firstAttribute="centerX" secondItem="cEO-gs-ph1" secondAttribute="centerX" id="3go-f4-bNt"/>
+                            <constraint firstItem="DD5-Kc-x4F" firstAttribute="top" secondItem="Hq2-1I-ef8" secondAttribute="bottom" constant="8" symbolic="YES" id="2WX-nz-wQc"/>
                             <constraint firstItem="SQS-Tx-fW5" firstAttribute="centerY" secondItem="cEO-gs-ph1" secondAttribute="centerY" id="8Um-Dg-Iak"/>
                             <constraint firstItem="zL9-qE-cf6" firstAttribute="centerY" secondItem="cEO-gs-ph1" secondAttribute="centerY" id="96Y-W9-nzY"/>
                             <constraint firstItem="9L2-ta-SoQ" firstAttribute="centerX" secondItem="SQS-Tx-fW5" secondAttribute="centerX" id="FQR-x8-KBm"/>
+                            <constraint firstItem="DD5-Kc-x4F" firstAttribute="leading" secondItem="cEO-gs-ph1" secondAttribute="leading" id="JAa-7o-Ybr"/>
                             <constraint firstItem="9L2-ta-SoQ" firstAttribute="centerY" secondItem="cEO-gs-ph1" secondAttribute="centerY" id="NGW-o0-EYD"/>
                             <constraint firstItem="SQS-Tx-fW5" firstAttribute="centerX" secondItem="cEO-gs-ph1" secondAttribute="centerX" id="SMt-IR-FuL"/>
+                            <constraint firstAttribute="trailing" secondItem="DD5-Kc-x4F" secondAttribute="trailing" id="Xtj-X1-x43"/>
+                            <constraint firstItem="DD5-Kc-x4F" firstAttribute="bottom" secondItem="DUh-eZ-sdy" secondAttribute="top" id="kFe-z2-gTg"/>
                             <constraint firstItem="DD5-Kc-x4F" firstAttribute="top" secondItem="Hq2-1I-ef8" secondAttribute="bottom" constant="216" id="q7R-iQ-wqA"/>
-                            <constraint firstItem="DD5-Kc-x4F" firstAttribute="centerY" secondItem="cEO-gs-ph1" secondAttribute="centerY" id="xPF-cJ-xke"/>
                             <constraint firstItem="SQS-Tx-fW5" firstAttribute="top" secondItem="Hq2-1I-ef8" secondAttribute="bottom" constant="216" id="yP4-RI-J7Y"/>
                         </constraints>
                         <variation key="default">
@@ -619,13 +621,21 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="xC6-1n-I0m">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="GQ2-f5-jwE">
+                            <connections>
+                                <segue destination="EEx-bJ-XFj" kind="show" id="SMV-W0-D5D"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Schöner" id="08s-8d-ebT"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="Text" destination="DD5-Kc-x4F" id="hTg-O1-r6e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rb1-Ta-GSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3504" y="1376"/>
+            <point key="canvasLocation" x="4316" y="1376"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l5Z-t8-MYl">
@@ -646,8 +656,30 @@
             </objects>
             <point key="canvasLocation" x="1240" y="595"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eU9-oG-naZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="du8-IE-dTA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LLr-EL-y2O">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wus-6l-stZ" kind="relationship" relationship="rootViewController" id="600-Tl-ob8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yXE-Lh-udJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3504" y="1376"/>
+        </scene>
     </scenes>
     <resources>
         <image name="remote_control" width="289" height="507"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="SMV-W0-D5D"/>
+    </inferredMetricsTieBreakers>
 </document>
