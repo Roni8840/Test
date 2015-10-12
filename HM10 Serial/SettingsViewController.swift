@@ -14,13 +14,18 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
     
     
 //MARK: IBOutlets
-    
-    
 
     @IBOutlet weak var Text: UITextView!
     //...
     
-
+    
+    
+//MARK: IBActions
+    
+    @IBAction func Back(sender: AnyObject) {
+        // dismissssssss
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
     
 //MARK: Functions
@@ -80,6 +85,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
 
         
     }
+    
     
 
 }

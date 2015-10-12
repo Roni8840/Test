@@ -624,10 +624,9 @@
                     <navigationItem key="navigationItem" id="xC6-1n-I0m">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="GQ2-f5-jwE">
                             <connections>
-                                <segue destination="EEx-bJ-XFj" kind="show" id="SMV-W0-D5D"/>
+                                <action selector="Back:" destination="wus-6l-stZ" id="yTT-75-PJc"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Schöner" id="08s-8d-ebT"/>
                     </navigationItem>
                     <connections>
                         <outlet property="Text" destination="DD5-Kc-x4F" id="hTg-O1-r6e"/>
@@ -679,7 +678,4 @@
     <resources>
         <image name="remote_control" width="289" height="507"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="SMV-W0-D5D"/>
-    </inferredMetricsTieBreakers>
 </document>
