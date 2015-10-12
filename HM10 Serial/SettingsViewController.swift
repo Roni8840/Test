@@ -15,8 +15,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
     
 //MARK: IBOutlets
     
+    
 
     @IBOutlet weak var Text: UITextView!
+    //...
     
 
 
