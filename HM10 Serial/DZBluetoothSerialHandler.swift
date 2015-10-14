@@ -128,8 +128,9 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
     
     /// Gives the content of the array and empties the array
     func readArray() -> [UInt8] {
-        //let array = dataBuf[0]
-        return dataBuf
+        let retVal = dataBuf
+        //dataBuf =  [UInt8]()
+        return retVal
     }
     
     /// Gives the content of the buffer without emptying it
@@ -232,59 +233,61 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
         // copy bytes into array
         data.getBytes(&array, length:count * sizeof(UInt8))
     
-        arrayBuffer = arrayBuffer + array
-        array = arrayBuffer
+        arrayBuffer +=  array
         
-        if arrayBuffer.count > 100 { //TODO: richtige grösse
-            
-            //leeres array für start indizes
-            var startIndices = [Int](count: array.count, repeatedValue: 0)
-            
-            var x = 0 //laufnummer
-            
-            //start in empfangen Daten finden
-            for var index = 0; index < array.count; ++index {
-                
-                if array[index] == 0xAA{
-                    if array[index+1] == 0x55{
-                        startIndices[x] = index
-                        x++
+        var dataValid : Bool = false
+        var amountOfBytes : Int = 0
+        
+        
+        if (arrayBuffer.indexOf(0xAA) != nil && arrayBuffer.indexOf(0x55) != nil){
+            if (arrayBuffer.indexOf(0xAA)! == (arrayBuffer.indexOf(0x55)! - 1)){
+                //print("start gfunden")
+                if ( arrayBuffer.count > (arrayBuffer.indexOf(0x55)!+1)){
+                    //print("Genügend Bytes Vorhandem um die Stream länge zu bestimmen")
+                    amountOfBytes = Int(arrayBuffer[arrayBuffer.indexOf(0xAA)!+2])
+                    if(arrayBuffer.count >= (arrayBuffer.indexOf(0xAA)!+amountOfBytes+2)){
+                        //vermutlich ganzes array vorhanden
+                        if(arrayBuffer[(arrayBuffer.indexOf(0xAA)!+amountOfBytes+1)] == 0xAA){
+                            //print("stream komplett")
+                            //nächster stream beginnt auch schon wieder
+                            for var index = 0; index<(amountOfBytes+1); ++index{
+                                dataBuf[index] = arrayBuffer[arrayBuffer.indexOf(0xAA)!+index]
+                            }
+                            dataValid = true
+                            arrayBuffer = []
+                            print("neue daten")
+                            let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .LongStyle)
+                            print(timestamp)
+                        }
+                        
                     }
                 }
             }
-
-            let start = startIndices[0]
-            var subArr = array[start...(start+45)] //TODO: bytesream länge herauslesen
+        }
+        else if (arrayBuffer.count > 100)
+        {
+            arrayBuffer = []
+            print("array buffer gelöscht")
             
-            
-            for var z = 0; z<45; ++z{
-                dataBuf[z] = array[start+z]
-            }
-            
-            //return string für message field
-            var returnString = ""
-            
-            //ausgabe formatieren
-            for var i = 0; i <= 45; ++i {
-                let wert = subArr[start+i].description
-                returnString = returnString + "B" + (i as NSNumber).stringValue + ": "
-                returnString = returnString + wert + ","
-            }
-            
-            let newStr = returnString
-            buffer += newStr
-            
+        }
+        
+        //print(arrayBuffer.description)
+        
+        let returnString = dataBuf.description
+        let newStr = returnString
+        buffer += newStr
+        
+        if(dataValid == true){
             // notify the delegate of the new string
-            if delegate.respondsToSelector(Selector("serialHandlerDidReceiveMessage:")) {
-                delegate!.serialHandlerDidReceiveMessage!(newStr)
-            }
+            //if delegate.respondsToSelector(Selector("serialHandlerDidReceiveMessage:")) {
+            //    delegate!.serialHandlerDidReceiveMessage!(newStr)
+            //}
             if delegate.respondsToSelector(Selector("serialHandlerNewData:")){
                 delegate!.serialHandlerNewData!(newStr)
             }
-            arrayBuffer = []
-            
-        
+            dataValid = false
         }
+        
         
     }
    

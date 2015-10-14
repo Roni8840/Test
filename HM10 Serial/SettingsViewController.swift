@@ -140,7 +140,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
         string += "\n"
         //Flags
         string += "\nFlags:\n"
-        var Flags = UInt(daten[36])
+        let Flags = UInt8(daten[36])
         string += "B36: "
         string += Flags.description + "\n"
         
