@@ -255,7 +255,7 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
                             }
                             dataValid = true
                             arrayBuffer = []
-                            print("neue daten")
+                            print("neue daten") //debug window
                             let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .LongStyle)
                             print(timestamp)
                         }
