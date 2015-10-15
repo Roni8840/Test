@@ -256,6 +256,7 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
                             dataValid = true
                             arrayBuffer = []
                             print("neue daten") //debug window
+                            print(dataBuf.description)
                             let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .LongStyle)
                             print(timestamp)
                         }
@@ -264,7 +265,8 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
                 }
             }
         }
-        else if (arrayBuffer.count > 100)
+        
+        if (arrayBuffer.count > 100)
         {
             arrayBuffer = []
             print("array buffer gelöscht")
@@ -275,7 +277,7 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
         
         let returnString = dataBuf.description
         let newStr = returnString
-        buffer += newStr
+        //buffer += newStr
         
         if(dataValid == true){
             // notify the delegate of the new string
