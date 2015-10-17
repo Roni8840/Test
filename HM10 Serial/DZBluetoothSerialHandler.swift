@@ -122,7 +122,6 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
     func read() -> String {
         let str = "\(buffer)" // <- is dit wel nodig??
         buffer = ""
-        arrayBuffer = [UInt8]()
         return str
     }
     
@@ -255,9 +254,8 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
                             }
                             dataValid = true
                             arrayBuffer = []
-                            print("neue daten") //debug window
-                            print(dataBuf.description)
-                            let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .LongStyle)
+                            let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .NoStyle, timeStyle: .MediumStyle)
+                            buffer += timestamp + " Neue Daten\n"
                             print(timestamp)
                         }
                         
@@ -270,20 +268,20 @@ final class DZBluetoothSerialHandler: NSObject, CBCentralManagerDelegate, CBPeri
         {
             arrayBuffer = []
             print("array buffer gelöscht")
+            let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .NoStyle, timeStyle: .MediumStyle)
+            buffer += timestamp + " Daten verworfen!\n"
             
         }
         
-        //print(arrayBuffer.description)
-        
-        let returnString = dataBuf.description
-        let newStr = returnString
-        //buffer += newStr
+
+        let newStr = "gugus"
+        //buffer += "\n"
         
         if(dataValid == true){
-            // notify the delegate of the new string
-            //if delegate.respondsToSelector(Selector("serialHandlerDidReceiveMessage:")) {
-            //    delegate!.serialHandlerDidReceiveMessage!(newStr)
-            //}
+            //notify the delegate of the new string
+            if delegate.respondsToSelector(Selector("serialHandlerDidReceiveMessage:")) {
+                delegate!.serialHandlerDidReceiveMessage!(newStr)
+            }
             if delegate.respondsToSelector(Selector("serialHandlerNewData:")){
                 delegate!.serialHandlerNewData!(newStr)
             }

@@ -16,6 +16,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
 //MARK: IBOutlets
 
     @IBOutlet weak var Text: UITextView!
+    @IBOutlet weak var activity: UIProgressView!
+    @IBOutlet weak var helligkeit: UIProgressView!
+    @IBOutlet weak var HelligkeitLabel: UILabel!
+    @IBOutlet weak var RelaisStateView: UISwitch!
     //...
     
     
@@ -25,6 +29,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
     @IBAction func Back(sender: AnyObject) {
         // dismissssssss
         dismissViewControllerAnimated(true, completion: nil)
+        
     }
 
     
@@ -83,6 +88,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
         }
         string += ambientLightInLux.description
         string += " lx\n"
+        helligkeit.progress = Float(ambientLightInLux)/2000
+        HelligkeitLabel.text = "Helligkeit (" + String(format: "%.0f", ambientLightInLux) + " lx)"
         
         string += "\n"
         
@@ -123,6 +130,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
         string += "Counter MAX: " + (Int(daten[18])).description + "\n"
         
         string += "\n"
+        activity.progress = Float(Int(daten[8])*256+Int(daten[9]))/1024
+        
         
         //-- Relais
         string += "\nRelay:\n"
@@ -130,9 +139,11 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
         string += "State: " + Int(daten[33]).description
         if RelaisState == 0{
             string += " (Relay OFF)\n"
+            RelaisStateView.on = false
         }
         else{
             string += " (Relay ON)\n"
+            RelaisStateView.on = true
         }
         string += "Current: " + (Int(daten[21])).description + "\n"
         string += "Operating Time: " + (Int(daten[44])*256+Int(daten[45])).description + " us\n"

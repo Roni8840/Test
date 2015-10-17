@@ -99,8 +99,8 @@ class SerialViewController: UIViewController, UITextFieldDelegate, DZBluetoothSe
     
     func serialHandlerDidReceiveMessage(message: String) {
         // add the received text to the textView, optionally with a line break at the end
-        //RER mainTextView.text! += serial.read()
-        mainTextView.text! = serial.read()
+        mainTextView.text! += serial.read()
+        //mainTextView.text! = serial.read()
         let pref = NSUserDefaults.standardUserDefaults().integerForKey("ReceivedMessageOption")
         if pref == ReceivedMessageOption.Newline.rawValue { mainTextView.text! += "\n" }
     }
@@ -158,4 +158,11 @@ class SerialViewController: UIViewController, UITextFieldDelegate, DZBluetoothSe
         dismissViewControllerAnimated(true, completion: nil)
     }
 
+    @IBAction func Reset(sender: AnyObject) {
+        //Text löschen
+        mainTextView.text! = ""
+        //delegate wieder auf diesen View Controlller setzen
+        //TODO: automatisch?!
+        serial.delegate = self
+    }
 }
