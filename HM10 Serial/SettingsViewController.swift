@@ -15,11 +15,17 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
     
 //MARK: IBOutlets
 
+    @IBOutlet weak var ApplicationTitle: UILabel!
     @IBOutlet weak var Text: UITextView!
     @IBOutlet weak var activity: UIProgressView!
+    @IBOutlet weak var CounterMAX: UIProgressView!
     @IBOutlet weak var helligkeit: UIProgressView!
     @IBOutlet weak var HelligkeitLabel: UILabel!
     @IBOutlet weak var RelaisStateView: UISwitch!
+    @IBOutlet weak var Brightness: UILabel!
+    @IBOutlet weak var Delay: UILabel!
+    @IBOutlet weak var Range: UILabel!
+    @IBOutlet weak var Relais: UILabel!
     //...
     
     
@@ -64,9 +70,23 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
         string += "\n"
         
         string += "Settings:\n"
+        
+        let TimerNachlaufzeit = Int(daten[37])*256+Int(daten[38])
+        //let RelaisOperatingTimeMS = Float(Int(daten[44])*256+Int(daten[45]))/1000
+        Relais.text = "Relais " + String(format: "%i", TimerNachlaufzeit) + " s"
+        
+        
         string += "Nachlaufzeit: " + (Int(daten[39])*256+Int(daten[40])).description + "s\n"
+        let Nachlaufzeit : Int = (Int(daten[39])*256+Int(daten[40]))
+        Delay.text = "Delay " + String(format: "%i", Nachlaufzeit) + " s"
+        
         string += "Range: " + (Int(daten[41])).description + " Prozent \n"
+        let RangeSetting : Int = Int(daten[41])
+        Range.text = "Range " + String(format: "%i", RangeSetting) + " %"
+        
         string += "Lux: " + (Int(daten[42])*256+Int(daten[43])).description + "lx \n"
+        let BrightnessSetting : Int = (Int(daten[42])*256+Int(daten[43]))
+        Brightness.text = "Brightness " + String(format: "%i", BrightnessSetting) + " lx"
         
         string += "\n"
         
@@ -89,7 +109,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
         string += ambientLightInLux.description
         string += " lx\n"
         helligkeit.progress = Float(ambientLightInLux)/2000
-        HelligkeitLabel.text = "Helligkeit (" + String(format: "%.0f", ambientLightInLux) + " lx)"
+        HelligkeitLabel.text = "Brightness " + String(format: "%.0f", ambientLightInLux) + " lx"
         
         string += "\n"
         
@@ -97,20 +117,24 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
         string += "\nApplikation:\n"
         string += "State: " + (Int(daten[20])).description + " ("
         let ApplikationsState = daten[20]
+        var state = ""
         switch ApplikationsState
         {
-        case 0: string += "Initialize"
-        case 1: string += "Idle"
-        case 2: string += "Install Mode"
-        case 3: string += "Self Test"
-        case 4: string += "Relay Test"
-        case 5: string += "Permanent ON"
-        case 6: string += "Permanent OFF"
-        case 7: string += "Burn In"
-            
-        default: string += "unbekannt"
-            
+            case 0: state += "Initialize"
+            case 1: state += "Idle"
+            case 2: state += "Install Mode"
+            case 3: state += "Self Test"
+            case 4: state += "Relay Test"
+            case 5: state += "Permanent ON"
+            case 6: state += "Permanent OFF"
+            case 7: string += "Burn In"
+            default: state += "unbekannt"
         }
+        
+        string += state
+        ApplicationTitle.text = "Application (" + state + ")"
+        
+        
         string += ")\n"
         
         string += "Timer Nachlaufzeit: " + (Int(daten[37])*256+Int(daten[38])).description + "s \n"
@@ -128,6 +152,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, DZBluetooth
         string += "Range: " + (Int(daten[16])).description + "\n"
         string += "Counter: " + (Int(daten[17])).description + "\n"
         string += "Counter MAX: " + (Int(daten[18])).description + "\n"
+        CounterMAX.progress = Float(daten[18])/100
         
         string += "\n"
         activity.progress = Float(Int(daten[8])*256+Int(daten[9]))/1024
